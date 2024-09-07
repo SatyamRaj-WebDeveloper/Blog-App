@@ -14,7 +14,7 @@ const Hero = () => {
           <p className='sm:text-lg font-medium mt-4 sm:w-80 text-sm'>"Welcome to <span className='text-indigo-500 text-xl'>BlogSphere</span> , the platform where your thoughts come to life. Whether you're a seasoned writer or just getting started, this is the space to share your ideas, stories, and experiences with the world. Join a vibrant community of creators, engage with readers, and explore limitless possibilities. Start writing today and let your words inspire, inform, and connect with people everywhere."
         </p>
         <div className='flex w-fit gap-2 items-center ring-1 ring-orange-600 px-3 py-2 mt-4 hover:bg-orange-600 hover:text-white transition-all'>
-        <NavLink>
+        <NavLink to='/SignUp'>
           Get Started
         </NavLink>
           <FaLongArrowAltRight />

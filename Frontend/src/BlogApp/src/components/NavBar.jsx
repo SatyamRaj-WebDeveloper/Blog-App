@@ -11,10 +11,13 @@ const NavBar = () => {
             <input type="text" className='w-[500px] h-8 px-3 py-2 rounded-r-full rounded-l-full outline-none hidden' placeholder='Search'/>
            <ul>
             <div className='sm:flex justify-between items-center w-fit p-4 gap-4 hidden'>
-            <NavLink className='text-xl font-medium hover:bg-orange-600 hover:text-white text-orange-600 h-fit w-fit px-3 py-2 rounded-md transition-all hover:underline '>
+            <NavLink to='/' className='text-xl font-medium hover:bg-orange-600 hover:text-white text-orange-600 h-fit w-fit px-3 py-2 rounded-md transition-all hover:underline '>
+                Home
+            </NavLink>
+            <NavLink to='/login' className='text-xl font-medium hover:bg-orange-600 hover:text-white text-orange-600 h-fit w-fit px-3 py-2 rounded-md transition-all hover:underline '>
                 Login
             </NavLink>
-            <NavLink className='text-xl font-medium hover:bg-orange-600 hover:text-white text-orange-600 h-fit w-fit px-3 py-2 rounded-md transition-all hover:underline '>
+            <NavLink to='/SignUp' className='text-xl font-medium hover:bg-orange-600 hover:text-white text-orange-600 h-fit w-fit px-3 py-2 rounded-md transition-all hover:underline '>
                 SignUp
             </NavLink>
             </div>
