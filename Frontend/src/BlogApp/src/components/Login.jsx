@@ -1,8 +1,14 @@
 import React, { useState } from 'react'
 import {NavLink} from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
+import { IoEye } from "react-icons/io5";
+import { IoEyeOffSharp } from "react-icons/io5";
+
 const Login = () => {
     const [response , setresponse] = useState(true)
+    const [Text ,setText] = useState('Password')
+
+
    const navigate = useNavigate()
     const handleLogin=async(e)=>{
        e.preventDefault();
@@ -18,21 +24,23 @@ const Login = () => {
             },
             body : JSON.stringify(fornData)
           })
-    console.log(response)
+          const data = await  response.json();
+          const accessToken = data.data.accessToken
+          const refreshToken = data.data.refreshToken
        if(!response.ok) {
         console.log("Response was not ok")
         setresponse(response.ok)
        } else {
+        localStorage.setItem('accessToken' , accessToken);
+        localStorage.setItem('refreshToken' ,refreshToken);
         console.log("User Logged In Successfully")
         navigate('/createBlog')
        }
        
-
     } catch (error) {
         console.log("Error Occured While loogin in " , error.message)
-    }   
+    }}
 
-    }
   return (
    <>
    <div className='w-full bg-slate-200 h-screen flex justify-center items-center'>
@@ -48,9 +56,15 @@ const Login = () => {
         <input type="text" className='focus:ring-1 rounded-md focus:ring-gray-500 outline-none w-50 h-6 ml-10 px-4 py-4' placeholder='Enter Your Email' required name='Email'/>
             </div>
             <div className='flex justify-center items-center'>
+        <div className='flex items-center relative'>
         <label htmlFor="" className='text-lg'>Password : </label>
-        <input type="password" className='focus:ring-1 rounded-md focus:ring-gray-500 outline-none w-50 ml-2 h-6 px-4 py-4' placeholder='Enter Password'  required name='Password'/>
+        <input type={Text} className='focus:ring-1 rounded-md focus:ring-gray-500 outline-none w-50 ml-2 h-6 px-4 py-4' placeholder='Enter Password'  required name='Password'/>
+        {
+            Text==='Password' ? <IoEye className='text-xl absolute right-2 cursor-pointer' onClick={()=>setText('text')}/>
+             : <IoEyeOffSharp className='text-xl absolute right-2 cursor-pointer' onClick={()=>setText('Password')}/>
+        }
             </div>
+        </div>
             {
                 response ? null : <span className='text-red-600 font-medium'>Incorrect Email or Password</span>
             }

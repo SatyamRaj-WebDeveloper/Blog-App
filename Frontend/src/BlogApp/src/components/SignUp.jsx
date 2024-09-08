@@ -1,9 +1,14 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
+import { IoEyeOffSharp } from "react-icons/io5";
+
+import { IoEye } from "react-icons/io5";
+import { useState } from 'react';
 const SignUp = () => {
   const navigate = useNavigate()
-  
+  const [text , settext] = useState('Password')
+
   const Submitform =async(e)=>{
     
     e.preventDefault()
@@ -57,7 +62,12 @@ const SignUp = () => {
             <div className='flex justify-center items-center'>
 
         <label htmlFor="" className='text-lg'>Password : </label>
-        <input type="password" required className='focus:ring-1 rounded-md focus:ring-gray-500 outline-none w-50 ml-2 h-6 px-4 py-4' placeholder='Enter Password'  name='Password'/>
+        <div className='flex items-center relative'>
+        <input type={text} required className='focus:ring-1 rounded-md focus:ring-gray-500 outline-none w-50 ml-2 h-6 px-4 py-4 ' placeholder='Enter Password'  name='Password'/>
+        {  text==='Password' ? <IoEye className=' absolute right-2  text-xl cursor-pointer' onClick={()=>settext('text')} /> : <IoEyeOffSharp className='cursor-pointer text-xl  absolute right-2 ' onClick={()=>{
+          settext('Password')
+        }} /> }
+        </div>
             </div>
             <span>Already have an Account ? <NavLink to='/Login' className='text-indigo-600 hover:underline cursor-pointer'>Login</NavLink></span>
             <button type='submit' className='w- h-fit px-3 py-2 bg-orange-600 text-lg text-white transition-all rounded-md hover:ring-1 hover:ring-orange-600 hover:bg-white hover:text-orange-600 sm:w-80 w-60 '>
